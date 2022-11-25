@@ -1,6 +1,6 @@
 const numberOfAttributes = document.querySelector('#number-of-attributes');
-const inputReadingFileMethod = document.querySelector();
-const inputWritingFileMethod = document.querySelector();
+const inputReadingFileMethod = document.querySelector('#number-of-attributes');
+const inputWritingFileMethod = document.querySelector('#number-of-attributes');
 
 
 const generateInputs = () => {
