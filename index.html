@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h2>Gen Code</h2>
+        <section class="">
+            <div class="first-form">
+                <h3>Start generating</h3>
+                <form>
+                    <label for="class-name">Class Name:</label><br>
+                    <input type="text" id="class-name" name="class-name"><br>
+                    <label for="number-of-attributes">Number of atTributes</label><br>
+                    <input type="text" id="number-of-attributes" name="number-of-attributes">
+                    <button type="button" onclick="generateInputs()">Send</button>
+                    <button type="button" onclick="createClass()">Generate Class!!</button>
+                    <div>
+                        <label>Add Reading for file method?</label>
+                        <input type="checkbox">
+                    </div>
+                    <div>
+                        <label>Add writing for file method?</label>
+                        <input type="checkbox">
+                    </div>
+                </form>
+                <br>
+                <br>
+                
+            </div>
+            <div class="second-form">
+                <form id="form-2">
+
+                </form>
+            </div>
+            <p class="answer" id="answer"></p>
+        </section>
+    </main>
+    <script src="./nodes.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

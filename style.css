@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 62.5%;
+    background-color: rgb(218, 170, 255);
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main h2 {
+    font-size: 3rem;
+    text-decoration: underline;
+}
+main section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.first-form {
+    width: 450px;
+    height: 400px;
+    background-color: coral;
+    box-shadow: -5px 5px 5px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
+
+.first-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.first-form form div {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.second-form {
+    width: 450px;
+    height: auto;
+    padding: 50px 10px;
+    background-color: rgb(120, 255, 110);
+    box-shadow: -5px 5px 5px black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
+.second-form  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/*all the buttons have t hse properties*/
+button {
+    margin: 5px 0px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: rgb(143, 165, 234);
+    border-radius: 5px;
+    box-shadow: -5px 5px 5px black;
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgb(141, 234, 192);
+}
+
+/*inputs style*/
+
+input {
+    margin: 5px 0px;
+    width: 200px;
+    height: 25px;
+    font-size: 1.2rem;
+}
+
+.answer {
+    background-color: rgba(225, 191, 106, 0.669);
+    font-size: 1.1rem;
+}
