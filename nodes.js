@@ -1,6 +1,6 @@
 const numberOfAttributes = document.querySelector('#number-of-attributes');
-const inputReadingFileMethod = document.querySelector('#number-of-attributes');
-const inputWritingFileMethod = document.querySelector('#number-of-attributes');
+const inputReadingWritingFileMethod = document.querySelector('#number-of-attributes');
+
 
 
 const generateInputs = () => {
@@ -17,7 +17,6 @@ const generateInputs = () => {
     }
     formulary.append(...inputs);
 }
-
 
 
 const getAttributes = () => {
