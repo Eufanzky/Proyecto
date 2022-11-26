@@ -45,6 +45,7 @@ const createWithReadingWritings = () => {
     using System.IO;
     class ${className}{
         ${genAtributes(atributes)};
+        ${genConstructor(atributes, className)}
         ${genGettersAndSetters(atributes)}
         ${genRead(atributes)}
         ${genShow(atributes)}
@@ -63,14 +64,19 @@ const createWithReadingWritings = () => {
 const createClassFile = () => {
     let className = document.querySelector('#class-name').value;
     let atributes = getAttributes();
+    let classForFile = document.querySelector('#classForFile').value;
     let gen =`
     using System;
     using System.IO;
     class ${className}{
         ${genAtributes(atributes)};
+        ${genConstructor(atributes, className)}
         ${genGettersAndSetters(atributes)}
-        ${genReadingForFile(atributes)}
-        ${genWritingForFile(atributes)}
+        ${genRead(atributes)}
+        ${genShow(atributes)}
+        ${genFileClassCreateNew()}
+        ${genFileClassAdd(atributes)}
+        ${genFileClassList()}
     }`
     
     console.log(gen);
@@ -292,17 +298,17 @@ const genFileClassCreateNew = () => {
     return method;
 }
 
-const genFileClassAdd = () => {
+const genFileClassAdd = (className) => {
     let method = `
     public void adicionar() {
 		// Abrimos el archivo o se crea un nuevo archivo si no existe
 		Stream archp = File.Open(nombre, FileMode.Append);
 		BinaryWriter escritor = new BinaryWriter(archp);
-		Avion av = new Avion();
+		${className} clas = new ${className}();
 		try {
 			do {
-				av.leer();
-				av.escribirAA(escritor);
+				clas.leer();
+				clas.escribirAA(escritor);
 				Console.Write("Desea continuar añadiendo Estudiantes? s/n => ");
 			} while( Console.ReadKey().KeyChar == 's' );
 		}
@@ -314,4 +320,71 @@ const genFileClassAdd = () => {
 		}
 	}
     `
+    return method;
+}
+
+const genFileClassList = (className) => {
+    let method = `
+    public void listar() {
+		// Abrimos el archivo o se crea un nuevo archivo si no existe
+		Stream archp = File.Open(nombre, FileMode.Open);
+		BinaryReader lector = new BinaryReader(archp);
+		${className} clas = new ${className}();
+		try {
+			Console.Write("\n\tnombre\tEdad");
+			while( true ) {
+				clas.leerAA(lector);
+				clas.mostrar();
+			}
+		}
+		catch( Exception ) {
+			Console.WriteLine("Fin de archivo ...");
+		}
+		finally {
+			archp.Close();
+		}
+	}
+    `
+    return method;
+}
+
+const genFileClassDelete = () => {
+    let method = `
+    public bool eliminar( string codigo ) {
+		bool sw = false;
+		try {
+			// Abrimos el archivo o se crea un nuevo archivo si no existe
+			Stream archp = File.Open(nombre, FileMode.Open);
+			Stream archTemporal = File.Open(@"..\temp.dat", FileMode.OpenOrCreate);
+			BinaryReader lector = new BinaryReader(archp);
+			BinaryWriter escribeTemp = new BinaryWriter(archTemporal);
+			${className} clas = new ${className}();
+			
+			try {
+				while( true ) {
+					clas.leerAA(lector);
+					if( clas.getExample() != codigo ) {
+						clas.escribirAA(escribeTemp);
+					}
+					else {
+						sw = true;
+					}
+				}
+			}
+			catch( Exception ) {
+				// No hace nada.
+			}
+			finally {
+				archp.Close();
+				archTemporal.Close();
+				File.Replace(@"..\temp.dat", nombre, nombre + ".bak");
+			}
+		}
+		catch( Exception ) {
+			Console.WriteLine("El archivo no se puede acceder !!!");
+		}
+		return sw;
+	}
+    `
+    return method;
 }
